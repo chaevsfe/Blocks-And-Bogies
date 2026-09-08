@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "id": "create_bb",
+  "version": "${version}",
+  "name": "Create Fly: Blocks & Bogies (Unofficial Port)",
+  "description": "Create: Blocks & Bogies port for Create Fly 26.2. Steam locomotive driving wheels, trailing trucks and bogies in many axle counts and valve gears, with a bogey selection menu.",
+  "authors": [
+    "Weido's Oddities",
+    "teacup",
+    "Matt",
+    "chaevsfe"
+  ],
+  "contributors": [
+    "cat4blep",
+    "chaevsfe"
+  ],
+  "contact": {
+    "homepage": "https://github.com/chaevsfe/Blocks-And-Bogies",
+    "sources": "https://github.com/chaevsfe/Blocks-And-Bogies",
+    "issues": "https://github.com/chaevsfe/Blocks-And-Bogies/issues",
+    "upstream": "https://modrinth.com/mod/blocks-bogies"
+  },
+  "license": [
+    "LGPL-3.0-only AND LGPL-3.0-or-later"
+  ],
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.weido.create_bb.BlocksBogies"
+    ],
+    "client": [
+      "com.weido.create_bb.BlocksBogiesClient"
+    ],
+    "create_plugin": [
+      "com.weido.create_bb.BlocksBogiesPlugin"
+    ]
+  },
+  "mixins": [
+    "create_bb.mixins.json",
+    {
+      "config": "create_bb.snr.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "minecraft": "${minecraft_dependency_version}",
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": "*",
+    "create": "${create_fabric_version_range}",
+    "java": ">=25"
+  },
+  "suggests": {
+    "railways": "*"
+  }
+}

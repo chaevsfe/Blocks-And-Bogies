@@ -1,0 +1,58 @@
+NOTICE
+======
+
+Create Fly: Blocks & Bogies — unofficial Create Fly port
+
+Based on Create: Blocks & Bogies by Weido's Oddities, teacup and Matt, version 1.0.8.
+  Upstream source:  https://github.com/WeidosOddities/Blocks-And-Bogies
+  Upstream project: https://modrinth.com/mod/blocks-bogies
+  This port:        https://github.com/chaevsfe/Blocks-And-Bogies
+
+Modified by chaevsfe in 2026 to run on Minecraft 26.2 with the Fabric mod
+loader, built against Create Fly by ZurrTum rather than the original Create mod.
+
+Nature of the modifications:
+  - retargeted from the Create mod to Create Fly (package com.zurrtum.create)
+  - block and item registration moved into Create Fly's create_plugin
+    early-registration entrypoint, Registrate removed
+  - bogey renderers and visuals migrated to the Minecraft 26.2 render-state model
+  - networking migrated to Fabric custom payloads
+  - ported from the NeoForge loader to Fabric
+  - the bogey renderers and visuals were re-expressed as single displays on
+    the unified bogey display framework (package
+    com.weido.create_bb.renderers.unified), copied from the Create Fly port of
+    Create: Steam 'n' Rails at commit a2fc14d5af6fd303565910373979a08b4784299d
+    (https://github.com/chaevsfe/Create-Steam-n-Rails-Fly, branch fabric-26.2),
+    which is itself derived from Create: Steam 'n' Rails by The Railways Team
+    (https://github.com/Layers-of-Railways/Railway, branch 1.20/create-v6);
+    Copyright (c) 2025 The Railways Team, with Create Fly port work by cat4blep;
+    LGPL-3.0-or-later, package renamed and copyright headers retained. This copy
+    is kept in lockstep with that port; update it from there rather than editing
+    it here.
+  - the shaft Z offsets follow upstream's SuperByteBuffer renderers, which
+    disagree with its Flywheel visuals on 22 style sizes; the visuals' literals
+    are typos (.1625f for .0625f, and gaps that break upstream's own
+    (j * 1.6875f) - 1.375f and (j * 1.125f) - 4.4375f chains)
+
+This is an UNOFFICIAL port. It is not endorsed by or affiliated with the
+original authors. Please report problems with the port to this repository,
+not to the upstream project.
+
+Licences
+--------
+The code is licensed under the GNU Lesser General Public License v3.0
+(LGPL-3.0-only); the full text accompanies this file as LICENSE. Upstream
+Create: Blocks & Bogies specifies no version election, so the "or any later
+version" option of LGPL-3.0 section 14 does not apply to it. The vendored bogey
+display framework in com.weido.create_bb.renderers.unified is the exception:
+its own headers grant LGPL-3.0-or-later, so the jar as a whole is
+LGPL-3.0-only AND LGPL-3.0-or-later.
+The assets (textures, models and other non-code content) are by teacup and
+GaXamillion, Copyright (c) 2026 t__cup, weido's oddities, and are licensed under
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0); the
+full text accompanies this file as ASSETS-LICENSE. The assets were modified for
+this port: the built-in Brassless Bogies resource pack was retargeted at Create
+Fly's 46-tile railway casing textures, one override for a texture that no longer
+exists was dropped, the bogey wheel textures were thresholded to full alpha, and
+a particle texture entry was added to the shared bogey part model.
+This modified version is distributed under the same licences.

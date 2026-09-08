@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "com.weido.create_bb.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "StationBlockEntityMixin",
+    "TrackBlockMixin",
+    "AbstractBogeyBlockMixin"
+  ],
+  "client": [
+    "CarriageContraptionVisualMixin",
+    "ContraptionVisualAccessor",
+    "ObjGeometryModelMeshMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
