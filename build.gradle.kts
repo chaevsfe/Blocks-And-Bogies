@@ -20,9 +20,15 @@ repositories {
         content { includeGroup("maven.modrinth") }
     }
     flatDir {
-        dirs("libs", "../../steam-n-rails/Create-Steam-n-Rails-Fly/build/libs")
+        dirs(
+            "libs",
+            "../../steam-n-rails/Create-Steam-n-Rails-Fly/build/libs",
+            "../../create-rei/CreateReiViewer-Fly/build/libs",
+        )
     }
 }
+
+val recipeViewer = ":CreateReiViewer:${property("createreiviewer_version")}+fabric-mc${property("minecraft_version")}"
 
 loom {
     mods {
@@ -45,6 +51,7 @@ dependencies {
     implementation("maven.modrinth:create-fly:${property("create_fabric_version")}")
 
     compileOnly(":Steam_Rails:${property("railways_version")}+fabric-mc${property("minecraft_version")}")
+    include(recipeViewer)
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 }
 

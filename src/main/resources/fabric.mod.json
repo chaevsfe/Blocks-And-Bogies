@@ -51,6 +51,8 @@
     "java": ">=25"
   },
   "suggests": {
-    "railways": "*"
+    "railways": "*",
+    "createreiviewer": "*",
+    "roughlyenoughitems": "*"
   }
 }
