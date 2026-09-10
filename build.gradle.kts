@@ -16,6 +16,9 @@ repositories {
     maven("https://api.modrinth.com/maven") {
         content { includeGroup("maven.modrinth") }
     }
+    flatDir {
+        dirs("libs", "../../steam-n-rails/Create-Steam-n-Rails-Fly/build/libs")
+    }
 }
 
 loom {
@@ -38,10 +41,7 @@ dependencies {
     implementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
     implementation("maven.modrinth:create-fly:${property("create_fabric_version")}")
 
-    compileOnly(files(fileTree("../../steam-n-rails/Create-Steam-n-Rails-Fly/build/libs") {
-        include("Steam_Rails-*.jar")
-        exclude("*-sources.jar")
-    }.files.maxByOrNull { it.lastModified() } ?: error("No Steam 'n' Rails jar in ../../steam-n-rails/Create-Steam-n-Rails-Fly/build/libs")))
+    compileOnly(":Steam_Rails:${property("railways_version")}+fabric-mc${property("minecraft_version")}")
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 }
 
