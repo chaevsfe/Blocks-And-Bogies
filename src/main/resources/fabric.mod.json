@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "create_bb",
   "version": "${version}",
-  "name": "Create Fly: Blocks & Bogies (Unofficial Port)",
+  "name": "Create Fly: Blocks & Bogies",
   "description": "Create: Blocks & Bogies port for Create Fly 26.2. Steam locomotive driving wheels, trailing trucks and bogies in many axle counts and valve gears, with a bogey selection menu.",
   "authors": [
     "Weido's Oddities",
