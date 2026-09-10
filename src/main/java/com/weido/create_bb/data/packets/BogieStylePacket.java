@@ -16,9 +16,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -72,7 +72,7 @@ public final class BogieStylePacket {
             if (style == null || size == null)
                 return;
 
-            Level level = player.level();
+            ServerLevel level = player.level();
             if (mayEdit(player, level, pos) && level.getBlockEntity(pos) instanceof AbstractBogeyBlockEntity oldBe) {
                 AbstractBogeyBlock<?> newBlock = style.getBlockForSize(size);
                 BlockState oldState = level.getBlockState(pos);
@@ -100,11 +100,11 @@ public final class BogieStylePacket {
             }
         }
 
-        private static boolean mayEdit(ServerPlayer player, Level level, @Nullable BlockPos pos) {
+        private static boolean mayEdit(ServerPlayer player, ServerLevel level, @Nullable BlockPos pos) {
             return pos != null && !player.isSpectator() && player.mayBuild() && level.isLoaded(pos) && pos.closerThan(
                 player.blockPosition(),
                 MAX_DISTANCE
-            );
+            ) && level.mayInteract(player, pos);
         }
 
         private static boolean isUpsideDown(BlockState state) {
