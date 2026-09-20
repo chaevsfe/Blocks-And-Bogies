@@ -3,7 +3,7 @@ package com.weido.create_bb.data.menu;
 import com.zurrtum.create.client.catnip.gui.render.EntityBlockRenderState;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.renderer.state.gui.pip.PictureInPictureRenderState;
-import org.joml.Matrix3x2fc;
+import org.joml.Matrix3x2f;
 
 public record ClippedEntityBlockRenderState(EntityBlockRenderState inner, ScreenRectangle scissorArea, ScreenRectangle bounds) implements PictureInPictureRenderState {
     public static ClippedEntityBlockRenderState of(EntityBlockRenderState inner, ScreenRectangle scissorArea) {
@@ -37,7 +37,7 @@ public record ClippedEntityBlockRenderState(EntityBlockRenderState inner, Screen
     }
 
     @Override
-    public Matrix3x2fc pose() {
+    public Matrix3x2f pose() {
         return inner.pose();
     }
 }

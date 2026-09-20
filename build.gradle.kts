@@ -31,6 +31,7 @@ repositories {
 val recipeViewer = ":CreateReiViewer:${property("createreiviewer_version")}+fabric-mc${property("minecraft_version")}"
 
 loom {
+    accessWidenerPath = file("src/main/resources/create_bb.accesswidener")
     mods {
         create("create_bb") {
             sourceSet(sourceSets.main.get())
@@ -108,6 +109,7 @@ val allowedJarPrefixes = listOf(
     "LICENSE",
     "ASSETS-LICENSE",
     "NOTICE",
+    "create_bb.accesswidener",
     "create_bb.mixins.json",
     "create_bb.snr.mixins.json",
     "fabric.mod.json",

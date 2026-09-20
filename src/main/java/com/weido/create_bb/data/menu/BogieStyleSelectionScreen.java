@@ -25,7 +25,6 @@ import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.LightCoordsUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
@@ -476,7 +475,7 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
 
         graphics.guiRenderState.addPicturesInPictureState(ClippedEntityBlockRenderState.of(EntityBlockRenderState.create(
             previewId, graphics, minecraft.level, BlockPos.ZERO, previewBE, bogeyState,
-            LightCoordsUtil.FULL_BRIGHT, x, y, modelScale, padding, -rotationX, rotationY + 180f, 0
+            x, y, modelScale, padding, -rotationX, rotationY + 180f, 0
         ), frame));
     }
 

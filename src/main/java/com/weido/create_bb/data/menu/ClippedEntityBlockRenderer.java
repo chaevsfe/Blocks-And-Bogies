@@ -4,26 +4,30 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.zurrtum.create.client.catnip.gui.render.EntityBlockRenderer;
 import net.minecraft.client.gui.navigation.ScreenRectangle;
 import net.minecraft.client.gui.render.pip.PictureInPictureRenderer;
-import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.state.gui.BlitRenderState;
 import net.minecraft.client.renderer.state.gui.GuiRenderState;
 
 public class ClippedEntityBlockRenderer extends PictureInPictureRenderer<ClippedEntityBlockRenderState> {
-    private final EntityBlockRenderer delegate = new EntityBlockRenderer();
+    private final EntityBlockRenderer delegate;
     private final ScissorRelay relay = new ScissorRelay();
 
+    public ClippedEntityBlockRenderer(MultiBufferSource.BufferSource bufferSource) {
+        super(bufferSource);
+        this.delegate = new EntityBlockRenderer(bufferSource);
+    }
+
     @Override
-    public void prepare(ClippedEntityBlockRenderState state, GuiRenderState guiRenderState, FeatureRenderDispatcher dispatcher, int windowScaleFactor) {
+    public void prepare(ClippedEntityBlockRenderState state, GuiRenderState guiRenderState, int windowScaleFactor) {
         relay.target = guiRenderState;
         relay.scissorArea = state.scissorArea();
-        delegate.prepare(state.inner(), relay, dispatcher, windowScaleFactor);
+        delegate.prepare(state.inner(), relay, windowScaleFactor);
         relay.target = null;
         relay.scissorArea = null;
     }
 
     @Override
-    protected void renderToTexture(ClippedEntityBlockRenderState state, PoseStack poseStack, SubmitNodeCollector collector) {
+    protected void renderToTexture(ClippedEntityBlockRenderState state, PoseStack poseStack) {
     }
 
     @Override

@@ -3,7 +3,7 @@
   "id": "create_bb",
   "version": "${version}",
   "name": "Create Fly: Blocks & Bogies",
-  "description": "Create: Blocks & Bogies port for Create Fly 26.2. Steam locomotive driving wheels, trailing trucks and bogies in many axle counts and valve gears, with a bogey selection menu.",
+  "description": "Create: Blocks & Bogies port for Create Fly 26.1.2. Steam locomotive driving wheels, trailing trucks and bogies in many axle counts and valve gears, with a bogey selection menu.",
   "authors": [
     "Weido's Oddities",
     "teacup",
@@ -23,6 +23,7 @@
   "license": [
     "LGPL-3.0-only AND LGPL-3.0-or-later"
   ],
+  "accessWidener": "create_bb.accesswidener",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {

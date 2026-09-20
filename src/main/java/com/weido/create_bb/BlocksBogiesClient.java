@@ -23,7 +23,7 @@ public class BlocksBogiesClient implements ClientModInitializer {
         BogieStyleRenders.register();
         AllBlockEntityRenders.visual(BogieBlockEntities.BOGEY, BogeyBlockEntityRenderer::new, BogeyBlockEntityVisual::new);
         BogieClientPackets.register();
-        PictureInPictureRendererRegistry.register(context -> new ClippedEntityBlockRenderer());
+        PictureInPictureRendererRegistry.register(context -> new ClippedEntityBlockRenderer(context.bufferSource()));
         registerBuiltinPack("brassless_bogies", "Blocks & Bogies: Brassless Bogies");
     }
 
