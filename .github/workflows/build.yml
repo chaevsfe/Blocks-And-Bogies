@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [fabric-26.2]
+    branches: [fabric-26.1.2]
   pull_request:
-    branches: [fabric-26.2]
+    branches: [fabric-26.1.2]
   workflow_dispatch:
 
 jobs:
@@ -28,16 +28,16 @@ jobs:
 
       - name: Fetch the Steam 'n' Rails jar this mod compiles against
         env:
-          RAILWAYS_JAR_NAME: Steam_Rails-1.7.2-fly.26.2-beta.14+fabric-mc26.2.jar
-          RAILWAYS_JAR_URL: https://github.com/chaevsfe/Create-Steam-n-Rails-Fly/releases/download/1.7.2-fly.26.2-beta.14/Steam_Rails-1.7.2-fly.26.2-beta.14%2Bfabric-mc26.2.jar
+          RAILWAYS_JAR_NAME: Steam_Rails-1.7.2-fly.26.1.2-beta.1+fabric-mc26.1.2.jar
+          RAILWAYS_JAR_URL: https://github.com/chaevsfe/Create-Steam-n-Rails-Fly/releases/download/1.7.2-fly.26.1.2-beta.1/Steam_Rails-1.7.2-fly.26.1.2-beta.1%2Bfabric-mc26.1.2.jar
         run: |
           mkdir -p libs
           curl -fsSL -o "libs/$RAILWAYS_JAR_NAME" "$RAILWAYS_JAR_URL"
 
       - name: Fetch the Create Fly Recipe Viewer jar this mod nests
         env:
-          VIEWER_JAR_NAME: CreateReiViewer-1.0.0-fly.26.2-beta.5+fabric-mc26.2.jar
-          VIEWER_JAR_URL: https://github.com/chaevsfe/CreateReiViewer-Fly/releases/download/1.0.0-fly.26.2-beta.5/CreateReiViewer-1.0.0-fly.26.2-beta.5%2Bfabric-mc26.2.jar
+          VIEWER_JAR_NAME: CreateReiViewer-1.0.0-fly.26.1.2-beta.1+fabric-mc26.1.2.jar
+          VIEWER_JAR_URL: https://github.com/chaevsfe/CreateReiViewer-Fly/releases/download/1.0.0-fly.26.1.2-beta.1/CreateReiViewer-1.0.0-fly.26.1.2-beta.1%2Bfabric-mc26.1.2.jar
         run: |
           mkdir -p libs
           curl -fsSL -o "libs/$VIEWER_JAR_NAME" "$VIEWER_JAR_URL"
@@ -48,6 +48,6 @@ jobs:
       - name: Upload jars
         uses: actions/upload-artifact@v4
         with:
-          name: create_bb-fabric-26.2
+          name: create_bb-fabric-26.1.2
           path: build/libs/*.jar
           if-no-files-found: error
