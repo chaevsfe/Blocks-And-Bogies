@@ -198,6 +198,14 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
     }
 
     @Override
+    public void removed() {
+        isDragging = false;
+        isMoving = false;
+        releaseCursor();
+        super.removed();
+    }
+
+    @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
         int speedX = speedScroll.getX();
         int speedY = speedScroll.getY();
