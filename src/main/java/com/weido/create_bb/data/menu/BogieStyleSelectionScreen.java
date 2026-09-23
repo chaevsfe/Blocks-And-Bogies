@@ -34,8 +34,6 @@ import com.weido.create_bb.registry.BlocksBogiesGuiTextures;
 import com.weido.create_bb.data.menu.Entry.StyleEntry;
 import com.weido.create_bb.data.menu.Input.*;
 
-import org.lwjgl.glfw.GLFW;
-
 public class BogieStyleSelectionScreen extends AbstractSimiScreen {
     private final BlocksBogiesGuiTextures background = BlocksBogiesGuiTextures.BOGIE_MENU;
     private final BlockPos targetPos;
@@ -59,6 +57,9 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
     private float prevWheelAngle = 0.0f;
     private double lastMouseX;
     private double lastMouseY;
+    private boolean cursorGrabbed = false;
+    private double grabbedCursorX;
+    private double grabbedCursorY;
     private TypeButton typeButton;
     private ScrollInput variantScroll;
     private ScrollInput valvegearScroll;
@@ -233,8 +234,8 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
                 lastMouseX = mouseX;
                 lastMouseY = mouseY;
             }
-            if ((isDragging || isMoving) && minecraft != null) {
-                GLFW.glfwSetInputMode(minecraft.getWindow().handle(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_HIDDEN);
+            if (isDragging || isMoving) {
+                grabCursor();
             }
             return true;
         }
@@ -247,9 +248,8 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
             if (minecraft != null) {
                 double mouseX = event.x();
                 double mouseY = event.y();
-                double scaleFactor = minecraft.getWindow().getGuiScale();
-                double centerX = (previewX + previewWidth / 2.0) * scaleFactor;
-                double centerY = (previewY + previewHeight / 2.0) * scaleFactor;
+                double centerX = previewX + previewWidth / 2.0;
+                double centerY = previewY + previewHeight / 2.0;
 
                 if (isDragging) {
                     float deltaX = (float) ((mouseX - lastMouseX) * 0.5f);
@@ -271,9 +271,9 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
                     previewOffsetY = Mth.clamp(previewOffsetY + (float) (mouseY - lastMouseY), previewY - baseY, previewY + previewHeight - baseY);
                 }
 
-                GLFW.glfwSetCursorPos(minecraft.getWindow().handle(), centerX, centerY);
-                lastMouseX = centerX / scaleFactor;
-                lastMouseY = centerY / scaleFactor;
+                moveGrabbedCursor(centerX, centerY);
+                lastMouseX = centerX;
+                lastMouseY = centerY;
             }
             return true;
         }
@@ -285,11 +285,29 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
         if (isDragging || isMoving) {
             isDragging = false;
             isMoving = false;
-            if (minecraft != null) {
-                GLFW.glfwSetInputMode(minecraft.getWindow().handle(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_NORMAL);
-            }
+            releaseCursor();
         }
         return super.mouseReleased(event);
+    }
+
+    private void grabCursor() {
+        if (minecraft == null || cursorGrabbed) return;
+        cursorGrabbed = true;
+        grabbedCursorX = minecraft.mouseHandler.xpos();
+        grabbedCursorY = minecraft.mouseHandler.ypos();
+        InputConstants.grabOrReleaseMouse(minecraft.getWindow(), InputConstants.CURSOR_DISABLED, grabbedCursorX, grabbedCursorY);
+    }
+
+    private void moveGrabbedCursor(double guiX, double guiY) {
+        if (minecraft == null || !cursorGrabbed) return;
+        double scaleFactor = minecraft.getWindow().getGuiScale();
+        InputConstants.grabOrReleaseMouse(minecraft.getWindow(), InputConstants.CURSOR_DISABLED, guiX * scaleFactor, guiY * scaleFactor);
+    }
+
+    private void releaseCursor() {
+        if (minecraft == null || !cursorGrabbed) return;
+        cursorGrabbed = false;
+        InputConstants.grabOrReleaseMouse(minecraft.getWindow(), InputConstants.CURSOR_NORMAL, grabbedCursorX, grabbedCursorY);
     }
 
     private void updateValidOptions() {
