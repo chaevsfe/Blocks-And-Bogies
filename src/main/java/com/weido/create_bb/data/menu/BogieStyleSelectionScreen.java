@@ -3,6 +3,7 @@ package com.weido.create_bb.data.menu;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import com.mojang.blaze3d.platform.InputConstants;
 import com.zurrtum.create.AllBogeyStyles;
 import com.zurrtum.create.content.trains.bogey.AbstractBogeyBlock;
 import com.zurrtum.create.content.trains.bogey.AbstractBogeyBlockEntity;
@@ -223,11 +224,11 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
         double mouseY = event.y();
         if (mouseX >= previewX && mouseX <= previewX + previewWidth &&
                 mouseY >= previewY && mouseY <= previewY + previewHeight) {
-            if (event.button() == 0) {
+            if (event.button() == InputConstants.MOUSE_BUTTON_LEFT) {
                 isDragging = true;
                 lastMouseX = mouseX;
                 lastMouseY = mouseY;
-            } else if (event.button() == 1) {
+            } else if (event.button() == InputConstants.MOUSE_BUTTON_RIGHT) {
                 isMoving = true;
                 lastMouseX = mouseX;
                 lastMouseY = mouseY;
