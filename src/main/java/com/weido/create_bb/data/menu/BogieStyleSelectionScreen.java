@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import com.mojang.blaze3d.platform.InputConstants;
+import com.mojang.blaze3d.platform.Window;
 import com.zurrtum.create.AllBogeyStyles;
 import com.zurrtum.create.content.trains.bogey.AbstractBogeyBlock;
 import com.zurrtum.create.content.trains.bogey.AbstractBogeyBlockEntity;
@@ -300,8 +301,10 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
 
     private void moveGrabbedCursor(double guiX, double guiY) {
         if (minecraft == null || !cursorGrabbed) return;
-        double scaleFactor = minecraft.getWindow().getGuiScale();
-        InputConstants.grabOrReleaseMouse(minecraft.getWindow(), InputConstants.CURSOR_DISABLED, guiX * scaleFactor, guiY * scaleFactor);
+        Window window = minecraft.getWindow();
+        InputConstants.grabOrReleaseMouse(window, InputConstants.CURSOR_DISABLED,
+            guiX * window.getScreenWidth() / window.getGuiScaledWidth(),
+            guiY * window.getScreenHeight() / window.getGuiScaledHeight());
     }
 
     private void releaseCursor() {
