@@ -233,7 +233,7 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
                 lastMouseX = mouseX;
                 lastMouseY = mouseY;
             }
-            if (minecraft != null) {
+            if ((isDragging || isMoving) && minecraft != null) {
                 GLFW.glfwSetInputMode(minecraft.getWindow().handle(), GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_HIDDEN);
             }
             return true;
