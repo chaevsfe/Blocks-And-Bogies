@@ -51,7 +51,7 @@ dependencies {
     implementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
     implementation("maven.modrinth:create-fly:${property("create_fabric_version")}")
 
-    compileOnly(":Steam_Rails:${property("railways_version")}+fabric-mc${property("minecraft_version")}")
+    compileOnly(":Steam_Rails:${property("railways_version")}")
     include(recipeViewer)
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 }
