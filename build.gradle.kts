@@ -157,6 +157,45 @@ afterEvaluate {
     tasks.named("check") { dependsOn(checkForeignNamespaces) }
 }
 
+val checkObjUvRange = tasks.register("checkObjUvRange") {
+    val objFiles = sourceSets.main.get().resources.matching { include("**/*.obj") }
+    val root = layout.projectDirectory.asFile
+    val marker = layout.buildDirectory.file("checkObjUvRange/scanned.txt")
+    inputs.files(objFiles).withPathSensitivity(PathSensitivity.RELATIVE)
+    outputs.file(marker)
+    doLast {
+        val bad = mutableListOf<String>()
+        var scanned = 0
+        var coordinates = 0
+        for (file in objFiles.files.sorted()) {
+            scanned++
+            file.useLines { lines ->
+                lines.forEachIndexed { index, line ->
+                    val parts = line.trim().split(Regex("\\s+"))
+                    if (parts.first() == "vt") {
+                        coordinates++
+                        val values = parts.drop(1).map { it.toDoubleOrNull() }
+                        if (values.any { it == null || it.isNaN() || it < 0.0 || it > 1.0 }) {
+                            bad.add("${file.relativeTo(root).invariantSeparatorsPath}:${index + 1}: ${line.trim()}")
+                        }
+                    }
+                }
+            }
+        }
+        if (scanned == 0) {
+            throw GradleException("checkObjUvRange found no .obj files")
+        }
+        if (bad.isNotEmpty()) {
+            throw GradleException("OBJ texture coordinates outside [0,1]:\n" + bad.joinToString("\n"))
+        }
+        val out = marker.get().asFile
+        out.parentFile.mkdirs()
+        out.writeText("$scanned files, $coordinates texture coordinates\n")
+    }
+}
+
+tasks.named("check") { dependsOn(checkObjUvRange) }
+
 tasks.register("printCompileClasspath") {
     val cp = sourceSets.main.get().compileClasspath
     val out = layout.projectDirectory.file(".classpath.txt")
