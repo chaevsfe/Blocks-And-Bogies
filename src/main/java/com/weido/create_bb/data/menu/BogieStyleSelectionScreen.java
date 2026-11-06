@@ -304,13 +304,13 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
         cursorGrabbed = true;
         grabbedCursorX = minecraft.mouseHandler.xpos();
         grabbedCursorY = minecraft.mouseHandler.ypos();
-        InputConstants.grabOrReleaseMouse(minecraft.getWindow(), InputConstants.CURSOR_DISABLED, grabbedCursorX, grabbedCursorY);
+        InputConstants.grabMouse(minecraft.getWindow(), grabbedCursorX, grabbedCursorY);
     }
 
     private void moveGrabbedCursor(double guiX, double guiY) {
         if (minecraft == null || !cursorGrabbed) return;
         Window window = minecraft.getWindow();
-        InputConstants.grabOrReleaseMouse(window, InputConstants.CURSOR_DISABLED,
+        InputConstants.grabMouse(window,
             guiX * window.getScreenWidth() / window.getGuiScaledWidth(),
             guiY * window.getScreenHeight() / window.getGuiScaledHeight());
     }
@@ -318,7 +318,7 @@ public class BogieStyleSelectionScreen extends AbstractSimiScreen {
     private void releaseCursor() {
         if (minecraft == null || !cursorGrabbed) return;
         cursorGrabbed = false;
-        InputConstants.grabOrReleaseMouse(minecraft.getWindow(), InputConstants.CURSOR_NORMAL, grabbedCursorX, grabbedCursorY);
+        InputConstants.releaseMouse(minecraft.getWindow(), grabbedCursorX, grabbedCursorY);
     }
 
     private void updateValidOptions() {
