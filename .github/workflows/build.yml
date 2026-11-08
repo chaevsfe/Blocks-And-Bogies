@@ -28,8 +28,8 @@ jobs:
 
       - name: Fetch the Steam 'n' Rails jar this mod compiles against
         env:
-          RAILWAYS_JAR_NAME: Steam_Rails-1.7.3.2+fly-mc26.3.jar
-          RAILWAYS_JAR_URL: https://github.com/chaevsfe/Create-Steam-n-Rails-Fly/releases/download/1.7.3.2%2Bfly-mc26.3/Steam_Rails-1.7.3.2%2Bfly-mc26.3.jar
+          RAILWAYS_JAR_NAME: Steam_Rails-1.7.3.3+fly-mc26.3.jar
+          RAILWAYS_JAR_URL: https://github.com/chaevsfe/Create-Steam-n-Rails-Fly/releases/download/1.7.3.3%2Bfly-mc26.3/Steam_Rails-1.7.3.3%2Bfly-mc26.3.jar
         run: |
           mkdir -p libs
           curl -fsSL -o "libs/$RAILWAYS_JAR_NAME" "$RAILWAYS_JAR_URL"
