@@ -87,12 +87,14 @@ tasks.processResources {
 
 tasks.jar {
     from("LICENSE")
+    from("COPYING")
     from("ASSETS-LICENSE")
     from("NOTICE")
 }
 
 tasks.named<Jar>("sourcesJar") {
     from("LICENSE")
+    from("COPYING")
     from("ASSETS-LICENSE")
     from("NOTICE")
 }
@@ -106,6 +108,7 @@ val allowedJarPrefixes = listOf(
     "resourcepacks/brassless_bogies/",
     "META-INF/",
     "LICENSE",
+    "COPYING",
     "ASSETS-LICENSE",
     "NOTICE",
     "create_bb.mixins.json",

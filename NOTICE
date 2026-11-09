@@ -41,7 +41,9 @@ not to the upstream project.
 Licences
 --------
 The code is licensed under the GNU Lesser General Public License v3.0
-(LGPL-3.0-only); the full text accompanies this file as LICENSE. Upstream
+(LGPL-3.0-only); the full text accompanies this file as LICENSE. The LGPL
+incorporates the terms of the GNU General Public License v3.0, whose full text
+accompanies this file as COPYING. Upstream
 Create: Blocks & Bogies specifies no version election, so the "or any later
 version" option of LGPL-3.0 section 14 does not apply to it. The vendored bogey
 display framework in com.weido.create_bb.renderers.unified is the exception:
