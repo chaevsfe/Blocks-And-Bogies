@@ -1,35 +1,128 @@
 {
   "values": [
-    "create_bb:l_0100",
-    "create_bb:l_0100_rot",
-    "create_bb:l_0120",
-    "create_bb:l_0120_rot",
-    "create_bb:l_020",
-    "create_bb:l_020_rot",
-    "create_bb:l_040",
-    "create_bb:l_040_rot",
-    "create_bb:l_060",
-    "create_bb:l_060_rot",
-    "create_bb:l_080",
-    "create_bb:l_080_rot",
-    "create_bb:s_0100_standard",
-    "create_bb:s_020_offset",
-    "create_bb:s_020_standard",
-    "create_bb:s_020_trailing",
-    "create_bb:s_040_trailing",
-    "create_bb:s_060_standard",
-    "create_bb:s_060_trailing",
-    "create_bb:s_080_standard",
-    "create_bb:s_080_trailing",
-    "create_bb:xl_0100",
-    "create_bb:xl_0100_rot",
-    "create_bb:xl_020",
-    "create_bb:xl_020_rot",
-    "create_bb:xl_040",
-    "create_bb:xl_040_rot",
-    "create_bb:xl_060",
-    "create_bb:xl_060_rot",
-    "create_bb:xl_080",
-    "create_bb:xl_080_rot"
+    {
+      "id": "create_bb:l_0100",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_0100_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_0120",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_0120_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_020",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_020_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_040",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_040_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_060",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_060_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_080",
+      "required": false
+    },
+    {
+      "id": "create_bb:l_080_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_0100_standard",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_020_offset",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_020_standard",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_020_trailing",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_040_trailing",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_060_standard",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_060_trailing",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_080_standard",
+      "required": false
+    },
+    {
+      "id": "create_bb:s_080_trailing",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_0100",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_0100_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_020",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_020_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_040",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_040_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_060",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_060_rot",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_080",
+      "required": false
+    },
+    {
+      "id": "create_bb:xl_080_rot",
+      "required": false
+    }
   ]
 }
