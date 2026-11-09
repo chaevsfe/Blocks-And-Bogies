@@ -25,7 +25,7 @@ Nature of the modifications:
     (https://github.com/chaevsfe/Create-Steam-n-Rails-Fly, branch fabric-26.2),
     which is itself derived from Create: Steam 'n' Rails by The Railways Team
     (https://github.com/Layers-of-Railways/Railway, branch 1.20/create-v6);
-    Copyright (c) 2025 The Railways Team, with Create Fly port work by cat4blep;
+    Copyright (c) 2025 The Railways Team, with Create Fly port work by R2bEEaton, cat4blep and chaevsfe;
     LGPL-3.0-or-later, package renamed and copyright headers retained. This copy
     is kept in lockstep with that port; update it from there rather than editing
     it here.
@@ -55,4 +55,30 @@ this port: the built-in Brassless Bogies resource pack was retargeted at Create
 Fly's 46-tile railway casing textures, one override for a texture that no longer
 exists was dropped, the bogey wheel textures were thresholded to full alpha, and
 a particle texture entry was added to the shared bogey part model.
+Sections of the code are from the Create mod
+(https://github.com/Creators-of-Create/Create), as upstream states; Create's
+code is used under the MIT License:
+
+  MIT License
+
+  Copyright (c) The Create Team / The Creators of Create
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
 This modified version is distributed under the same licences.
