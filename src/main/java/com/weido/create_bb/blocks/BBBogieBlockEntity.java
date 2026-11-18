@@ -1,6 +1,7 @@
 package com.weido.create_bb.blocks;
 
 import com.zurrtum.create.AllBogeyStyles;
+import com.zurrtum.create.content.trains.bogey.AbstractBogeyBlock;
 import com.zurrtum.create.content.trains.bogey.AbstractBogeyBlockEntity;
 import com.zurrtum.create.content.trains.bogey.BogeyStyle;
 
@@ -27,8 +28,14 @@ public class BBBogieBlockEntity extends AbstractBogeyBlockEntity {
     protected void loadAdditional(ValueInput view) {
         super.loadAdditional(view);
         CompoundTag data = getBogeyData();
-        if (data.getString(BOGEY_STYLE_KEY).map(Identifier::tryParse).isEmpty())
+        Identifier id = data.getString(BOGEY_STYLE_KEY).map(Identifier::tryParse).orElse(null);
+        if (id == null || !fitsBlock(AllBogeyStyles.BOGEY_STYLES.get(id)))
             data.store(BOGEY_STYLE_KEY, Identifier.CODEC, getDefaultStyle().id);
+    }
+
+    private boolean fitsBlock(BogeyStyle style) {
+        return style == null || !(getBlockState().getBlock() instanceof AbstractBogeyBlock<?> bogey)
+            || style.validSizes().contains(bogey.getSize());
     }
 
 }
